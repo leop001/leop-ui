@@ -32,11 +32,10 @@ const Button = ({
   ...restProps
 }: ButtonnProps) => {
 
-  const classes = classNames('btn', {
+  const classes = classNames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     disabled: (btnType === ButtonType.Link) && disabled,
-    className
   })
 
   if (btnType === ButtonType.Link && href) {
