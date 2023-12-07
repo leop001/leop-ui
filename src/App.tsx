@@ -1,9 +1,32 @@
 import Button, {ButtonSize, ButtonType} from "./components/Button/button";
+import Menu from "./components/Menu/menu";
+import MenuItem from "./components/Menu/menuItem";
+import SubMenu from "./components/Menu/subMenu";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Menu defaultIndex='0' mode="vertical" onSelect={(index) => {console.log(index)}} defaultOpenSubMenus={['1']}>
+          <MenuItem>
+            item 1
+          </MenuItem>
+          <MenuItem disabled>
+            item 2
+          </MenuItem>
+          <SubMenu title="drop">
+            <MenuItem>
+              item 1
+            </MenuItem>
+            <MenuItem>
+              item 2
+            </MenuItem>
+          </SubMenu>
+          <MenuItem>
+            item 3
+          </MenuItem>
+        </Menu>
+
         <Button disabled>button</Button>
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>button</Button>
         <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>button</Button>
