@@ -11,16 +11,16 @@ export enum ButtonType {
   Link = 'link'
 }
 interface BaseButtonProps {
-  className?: string,
-  disabled?: boolean,
-  size?: ButtonSize,
-  btnType?: ButtonType,
-  children?: React.ReactNode,
-  href?: string
+  className?: string;
+  disabled?: boolean;
+  size?: ButtonSize;
+  btnType?: ButtonType;
+  children?: React.ReactNode;
+  href?: string;
 }
-type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
-type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
-export type ButtonnProps = Partial<NativeButtonProps & AnchorButtonProps>
+type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>;
+type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>;
+export type ButtonnProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 const Button = ({
   btnType = ButtonType.Default,

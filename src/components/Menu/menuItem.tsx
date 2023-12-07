@@ -2,11 +2,11 @@ import classNames from "classnames";
 import React, {useContext} from "react";
 import { MenuContext } from "./menu";
 export interface MenuItemProps {
-  index?: string,
-  disabled?: boolean,
-  className?: string,
-  style?: React.CSSProperties,
-  children?: React.ReactNode
+  index?: string;
+  disabled?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
 }
 const MenuItem = ({ 
   index,

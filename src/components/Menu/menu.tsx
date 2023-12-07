@@ -5,19 +5,19 @@ import { MenuItemProps } from "./menuItem"
 type MenuMode = 'horizontal' | 'vertical'
 type SelectCallback = (selectedIndex: string) => void
 export interface MenuProps {
-  defaultIndex?: string,
-  className?: string,
-  mode?: MenuMode,
-  style?: React.CSSProperties,
-  children?: React.ReactNode,
-  onSelect?: SelectCallback,
-  defaultOpenSubMenus?: string[]
+  defaultIndex?: string;
+  className?: string;
+  mode?: MenuMode;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+  onSelect?: SelectCallback;
+  defaultOpenSubMenus?: string[];
 }
 interface IMenuContext {
-  index: string,
-  mode?: MenuMode,
-  onSelect?: SelectCallback
-  defaultOpenSubMenus?: string[]
+  index: string;
+  mode?: MenuMode;
+  onSelect?: SelectCallback;
+  defaultOpenSubMenus?: string[];
 }
 export const MenuContext = createContext<IMenuContext>({index: '0'})
 const Menu = ({
