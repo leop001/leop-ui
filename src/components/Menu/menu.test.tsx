@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Menu, {MenuProps} from "./menu";
 import MenuItem from "./menuItem";
 import SubMenu from "./subMenu";
@@ -46,7 +46,6 @@ const createStyleFile = () => {
     }
   `
   const style = document.createElement('style')
-  // style.type = 'text/css'
   style.innerHTML = cssFile
   return style
 }
@@ -81,16 +80,22 @@ describe('test Menu and MenuItem components', () => {
     const element = screen.getByTestId('test-menu')
     expect(element).toHaveClass('menu-vertical')
   })
-  it('should show dropdown items when hover on subMenu', () => {
+  it('should show dropdown items when hover on subMenu', async () => {
     render(generateMenu(testProps))
+    const style = createStyleFile();
+    document.head.appendChild(style);
     const dropdown = screen.getByText('dropdown')
     const drop = screen.getByText('drop 1')
-    drop.style.display = 'none'
     expect(drop).not.toBeVisible()
     fireEvent.mouseEnter(dropdown)
-    drop.style.display = 'block'
-    expect(drop).toBeVisible()
+    await waitFor(() => {
+      expect(drop).toBeVisible()
+    })
     fireEvent.click(drop)
     expect(testProps.onSelect).toHaveBeenCalledWith('2-0')
+    fireEvent.mouseLeave(dropdown)
+    await waitFor(() => {
+      expect(drop).not.toBeVisible()
+    })
   })
 })
